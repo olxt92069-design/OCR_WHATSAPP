@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#10100f">
+<title>WhatsApp Number Scanner | Black Gold</title>
+<style>
+:root{--bg:#0b0b0a;--panel:#151513;--panel2:#1d1c18;--gold:#d7ad52;--gold2:#f2d58a;--text:#f6f0df;--muted:#a8a18e;--line:#393326;--orange:#e9a04b;--red:#e26f62;--green:#75c79a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#252013 0,#0b0b0a 45%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}
+.app{width:min(100%,820px);margin:auto;padding:16px 13px 36px}.top{display:flex;align-items:center;gap:12px;padding:8px 2px 18px}.logo{width:48px;height:48px;border:1px solid var(--gold);border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#3a2c10,#17140d);color:var(--gold2);font-size:25px;box-shadow:0 0 24px #d7ad5218}.brand{font-weight:850;letter-spacing:.5px;font-size:18px}.brand span{color:var(--gold2)}.subtitle{font-size:12px;color:var(--muted);margin-top:2px}.pill{margin-left:auto;border:1px solid #64502a;color:var(--gold2);padding:5px 8px;border-radius:999px;font-size:10px;white-space:nowrap}
+.hero{padding:20px;border:1px solid #594624;border-radius:22px;background:linear-gradient(135deg,#211c10,#141411 65%);box-shadow:0 14px 45px #0005}.eyebrow{font-size:10px;color:var(--gold);letter-spacing:2px;font-weight:800}.hero h1{font-size:26px;line-height:1.12;margin:8px 0 9px;letter-spacing:-.7px}.hero p{margin:0;color:#c2bba8;font-size:13px;line-height:1.55}.hero strong{color:var(--gold2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.stat{border:1px solid var(--line);background:#141411;border-radius:14px;padding:12px 10px}.stat b{display:block;color:var(--gold2);font-size:21px}.stat span{font-size:11px;color:var(--muted)}
+.panel{background:linear-gradient(145deg,#171714,#111110);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.section-head h2{font-size:15px;margin:0}.mini{font-size:11px;color:var(--muted)}.drop{border:1.5px dashed #82682f;border-radius:15px;padding:22px 12px;text-align:center;background:#d7ad5208}.upload-icon{font-size:27px;color:var(--gold2)}.drop b{display:block;margin:7px 0 4px;font-size:14px}.drop p{font-size:12px;color:var(--muted);margin:0 0 13px}.btn{border:1px solid #6d572b;border-radius:11px;padding:10px 13px;background:linear-gradient(135deg,#d9b45d,#a87b2c);color:#17130a;font-weight:800;font-size:12px}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.secondary{background:#242219;color:var(--gold2);border-color:#4b4027}.btn.ghost{background:transparent;color:var(--muted);border-color:var(--line)}.btn.danger{background:#2b1714;color:#f1a39a;border-color:#60332d}.btn.small{padding:7px 9px;font-size:11px}.full{width:100%;margin-top:12px;padding:13px}.file-list{display:grid;gap:8px;margin-top:12px}.file-item{display:flex;align-items:center;gap:10px;background:#11110f;border:1px solid #302c21;border-radius:12px;padding:8px}.thumb{width:47px;height:56px;object-fit:cover;border-radius:7px;background:#25231d}.file-meta{flex:1;min-width:0}.file-meta b{display:block;font-size:12px;overflow-wrap:anywhere}.file-meta small{color:var(--muted);font-size:10px}.remove{background:none;border:0;color:#d5a59b;font-size:20px;padding:4px 7px}
+.progress-wrap{margin-top:13px;display:none}.progress-top{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:7px}.progress{height:7px;background:#302c22;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#a87b2c,#f4d78b);transition:width .2s}.status{font-size:12px;color:var(--gold2);margin-top:8px;min-height:17px}
+.notice{font-size:11px;line-height:1.5;color:#bdb5a2;background:#1b1913;border-left:3px solid var(--orange);padding:10px 12px;border-radius:5px;margin-top:12px}.toolbar{display:flex;gap:7px;flex-wrap:wrap}.toolbar .btn{flex:1;min-width:95px}.result-summary{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.count-chip{border:1px solid #4c4027;border-radius:999px;padding:5px 8px;font-size:10px;color:var(--gold2)}.search{width:100%;background:#0d0d0b;border:1px solid var(--line);border-radius:10px;padding:11px 12px;color:var(--text);outline:none;margin:12px 0}.search:focus,input:focus{border-color:var(--gold)}
+.results{display:grid;gap:8px}.result-row{display:flex;gap:9px;align-items:center;border:1px solid #302d23;background:#11110f;border-radius:12px;padding:10px}.result-row.flagged{border-color:#795529;background:#211a10}.number{font-size:14px;font-weight:750;letter-spacing:.3px;overflow-wrap:anywhere}.row-sub{font-size:10px;color:var(--muted);margin-top:3px}.row-main{flex:1;min-width:0}.flag{font-size:9px;color:#f0bd72;border:1px solid #75532b;border-radius:6px;padding:3px 5px;display:inline-block;margin-top:4px}.row-actions{display:flex;gap:5px;flex-direction:column}.iconbtn{background:#242219;color:var(--gold2);border:1px solid #49402a;border-radius:8px;padding:6px 8px;font-size:11px}.empty{text-align:center;padding:25px 10px;color:var(--muted);font-size:12px;border:1px dashed #383326;border-radius:12px}.empty b{display:block;color:#d8cba9;margin-bottom:5px}.footer{text-align:center;color:#746e5e;font-size:10px;padding:20px 0}.modal-back{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal{width:min(100%,420px);background:#171714;border:1px solid #6c562d;border-radius:17px;padding:18px}.modal h3{margin:0 0 12px;font-size:16px}.modal label{display:block;font-size:11px;color:var(--muted);margin:12px 0 5px}.modal input{width:100%;background:#0b0b0a;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:11px;outline:none}.modal-actions{display:flex;gap:8px;margin-top:15px}.modal-actions button{flex:1}
+@media(min-width:600px){.app{padding:24px}.hero h1{font-size:32px}.file-list{grid-template-columns:1fr 1fr}.results{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="logo">⌕</div><div><div class="brand">NUMBER <span>SCANNER</span></div><div class="subtitle">OCR WORKSPACE · BLACK GOLD EDITION</div></div><div class="pill">LOCAL OCR</div></header>
+<section class="hero"><div class="eyebrow">SMART IMAGE READER</div><h1>Ubah screenshot jadi<br><strong>daftar nomor rapi.</strong></h1><p>Masukkan banyak gambar, scan teks, bersihkan format nomor Indonesia, lalu tinjau hasil sebelum disalin atau diekspor.</p></section>
+<div class="stats"><div class="stat"><b id="statImages">0</b><span>Gambar</span></div><div class="stat"><b id="statNumbers">0</b><span>Nomor unik</span></div><div class="stat"><b id="statReview">0</b><span>Perlu dicek</span></div></div>
+<section class="panel">
+<div class="section-head"><h2>01 / Masukkan gambar</h2><span class="mini">JPG · PNG · WEBP</span></div>
+<div class="drop" id="dropArea"><div class="upload-icon">▧</div><b>Pilih screenshot atau foto</b><p>Multi-pilih gambar dari galeri. Teks yang jelas memberi hasil terbaik.</p><button class="btn" id="chooseBtn">＋ Pilih Gambar</button><input id="fileInput" type="file" accept="image/*" multiple hidden></div>
+<div class="file-list" id="fileList"></div>
+<div class="progress-wrap" id="progressWrap"><div class="progress-top"><span id="progressLabel">Menyiapkan OCR…</span><span id="progressPct">0%</span></div><div class="progress"><div class="bar" id="progressBar"></div></div><div class="status" id="statusText" role="status"></div></div>
+<button class="btn full" id="scanBtn" disabled>▶ MULAI SCAN SEMUA GAMBAR</button>
+<div class="notice">Privasi: gambar diproses di browser setelah mesin OCR dimuat. Pustaka OCR perlu diunduh dari internet pada penggunaan pertama. Hasil otomatis bukan jaminan 100% benar—periksa nomor yang ditandai.</div>
+</section>
+<section class="panel">
+<div class="section-head"><h2>02 / Hasil ekstraksi</h2><div class="result-summary"><span class="count-chip" id="uniqueChip">0 nomor</span><span class="count-chip" id="reviewChip">0 perlu dicek</span></div></div>
+<div class="toolbar"><button class="btn secondary" id="copyBtn" disabled>▣ Salin Nomor</button><button class="btn secondary" id="txtBtn" disabled>↓ Ekspor TXT</button><button class="btn secondary" id="csvBtn" disabled>↓ Ekspor CSV</button></div>
+<input class="search" id="searchInput" placeholder="Cari nomor…" autocomplete="off">
+<div class="results" id="results"><div class="empty"><b>Belum ada hasil scan</b>Tambahkan gambar, lalu tekan Mulai Scan.</div></div>
+<div class="toolbar" style="margin-top:10px"><button class="btn ghost" id="toggleDupBtn" disabled>Tampilkan nomor duplikat</button><button class="btn ghost" id="clearResultsBtn" disabled>Hapus Hasil</button></div>
+</section>
+<div class="footer">NUMBER SCANNER · Periksa hasil OCR sebelum digunakan · Tidak ada broadcast otomatis</div>
+</div>
+<div class="modal-back" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editTitle"><div class="modal"><h3 id="editTitle">Koreksi nomor</h3><label for="editNumber">Nomor WhatsApp</label><input id="editNumber" inputmode="tel" placeholder="Contoh: 6281234567890"><div class="notice">Gunakan nomor yang terlihat di gambar. Koreksi manual membantu menghindari salah baca OCR.</div><div class="modal-actions"><button class="btn secondary" id="cancelEdit">Batal</button><button class="btn" id="saveEdit">Simpan koreksi</button></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+let files=[],records=[],duplicatesVisible=false,editingId=null,worker=null,isScanning=false;
+const fmtBytes=n=>n<1024*1024?(n/1024).toFixed(0)+' KB':(n/1024/1024).toFixed(1)+' MB';
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function updateStats(){const uniq=records.filter(r=>!r.duplicate).length; $('statImages').textContent=files.length;$('statNumbers').textContent=uniq;$('statReview').textContent=records.filter(r=>r.review&&!r.duplicate).length;$('uniqueChip').textContent=uniq+' nomor';$('reviewChip').textContent=records.filter(r=>r.review&&!r.duplicate).length+' perlu dicek';const has=records.length>0;$('copyBtn').disabled=!has;$('txtBtn').disabled=!has;$('csvBtn').disabled=!has;$('clearResultsBtn').disabled=!has;$('toggleDupBtn').disabled=!records.some(r=>r.duplicate);$('toggleDupBtn').textContent=duplicatesVisible?'Sembunyikan duplikat':'Tampilkan nomor duplikat';}
+function renderFiles(){const list=$('fileList');list.innerHTML='';files.forEach((f,i)=>{const u=URL.createObjectURL(f.file);const el=document.createElement('div');el.className='file-item';el.innerHTML=`<img class="thumb" src="${u}" alt="Preview ${i+1}"><div class="file-meta"><b>${escapeHtml(f.file.name)}</b><small>${fmtBytes(f.file.size)} · ${f.done?'Selesai scan':f.error?'Gagal':'Menunggu scan'}</small></div><button class="remove" title="Hapus gambar" aria-label="Hapus gambar" data-remove="${f.id}">×</button>`;list.appendChild(el);});$('scanBtn').disabled=!files.length||isScanning;$('statImages').textContent=files.length;}
+function addFiles(fileList){const incoming=Array.from(fileList||[]).filter(f=>f.type.startsWith('image/'));if(!incoming.length)return;incoming.forEach(file=>files.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),file,done:false,error:false}));renderFiles();}
+$('chooseBtn').addEventListener('click',()=>$('fileInput').click());$('fileInput').addEventListener('change',e=>{addFiles(e.target.files);e.target.value='';});
+$('fileList').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b||isScanning)return;files=files.filter(f=>f.id!==b.dataset.remove);renderFiles();});
+['dragenter','dragover'].forEach(ev=>$('dropArea').addEventListener(ev,e=>{e.preventDefault();$('dropArea').style.background='#d7ad5218';}));
+['dragleave','drop'].forEach(ev=>$('dropArea').addEventListener(ev,e=>{e.preventDefault();$('dropArea').style.background='';if(ev==='drop')addFiles(e.dataTransfer.files);}));
+function normalizeNumber(raw){let s=raw.replace(/[^\d+]/g,'');if(s.startsWith('+'))s=s.slice(1);if(s.startsWith('008'))s='62'+s.slice(3);else if(s.startsWith('08'))s='62'+s.slice(1);else if(s.startsWith('8'))s='62'+s;if(s.startsWith('620'))s='62'+s.slice(3);return s;}
+function validIndonesian(n){return /^628\d{7,12}$/.test(n);}
+function extractCandidates(text,fileId){
+  const found=[], lines=text.split(/\\r?\\n/);
+  // Scan each OCR line, then also search the flattened text so numbers split over lines aren't lost.
+  const sources=lines.map((line,i)=>({text:line,line:i+1})).concat([{text:text.replace(/\\s+/g,' '),line:0}]);
+  const seenHere=new Set();
+  for(const src of sources){
+    const re=/(?:\\+?62|0062|008|62|0)?[\\s().\\-]*[0-9Il|!OoSsBb](?:[\\s().\\-]*[0-9Il|!OoSsBb]){7,16}/g;
+    let m;
+    while((m=re.exec(src.text))!==null){
+      const raw=m[0].trim();
+      // OCR often confuses these characters in digits; convert conservatively and mark for review.
+      let cleaned=raw.replace(/[Il|!]/g,'1').replace(/[Oo]/g,'0').replace(/[Ss]/g,'5').replace(/[Bb]/g,'8');
+      const digits=cleaned.replace(/\\D/g,'');
+      if(digits.length<9||digits.length>16)continue;
+      let number=normalizeNumber(cleaned);
+      if(!validIndonesian(number))continue;
+      const key=number+'|'+src.line;
+      if(seenHere.has(key))continue;seenHere.add(key);
+      const suspicious=/[Il|!OoSsBb]/.test(raw)||digits.length<10||digits.length>14;
+      found.push({id:(crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random())),number,source:fileId,raw,line:src.line||1,review:suspicious,duplicate:false,occurrences:1});
+    }
+  }
+  return found;
+}
+function mergeAndDedupe(newRecords){records=records.concat(newRecords);const seen=new Map();records.forEach(r=>{r.duplicate=false;r.occurrences=1;});records.forEach(r=>{if(seen.has(r.number)){r.duplicate=true;seen.get(r.number).duplicate=true;seen.get(r.number).occurrences++;r.occurrences=seen.get(r.number).occurrences;}else seen.set(r.number,r);});}
+async function startScan(){if(isScanning||!files.length)return;if(!window.Tesseract){setStatus('Pustaka OCR belum termuat. Periksa koneksi internet lalu muat ulang halaman.');return;}isScanning=true;$('scanBtn').disabled=true;$('progressWrap').style.display='block';records=[];renderResults();updateStats();let completed=0;const total=files.length;try{worker=await Tesseract.createWorker('eng',1,{logger:m=>{if(m.status==='recognizing text'){const pct=Math.round(((completed+(m.progress||0))/total)*100);setProgress(pct,`Membaca gambar ${Math.min(completed+1,total)} dari ${total}…`);}}});await worker.setParameters({preserve_interword_spaces:'1',user_defined_dpi:'300',tessedit_char_whitelist:'0123456789+()- .'});
+for(let i=0;i<files.length;i++){const item=files[i];setStatus(`Memproses ${i+1}/${total}: ${item.file.name}`);try{
+  const original=await loadImageCanvas(item.file,false);
+  const enhanced=await loadImageCanvas(item.file,true);
+  // Two OCR passes: page segmentation 6 handles regular lists; 11 looks for scattered text.
+  let combined='';
+  for(const mode of ['6','11']){
+    await worker.setParameters({tessedit_pageseg_mode:mode});
+    const a=await worker.recognize(original);combined+='\\n'+a.data.text;
+    const b=await worker.recognize(enhanced);combined+='\\n'+b.data.text;
+  }
+  const got=extractCandidates(combined,item.id);mergeAndDedupe(got);item.done=true;item.error=false;
+}catch(err){console.error(err);item.error=true;setStatus(`Tidak berhasil membaca ${item.file.name}. Coba gambar lebih jelas.`);}completed++;setProgress(Math.round(completed/total*100),`Selesai ${completed} dari ${total} gambar`);renderFiles();renderResults();updateStats();}setStatus(`Selesai. Ditemukan ${records.filter(r=>!r.duplicate).length} nomor unik. Periksa hasil yang ditandai.`);}catch(err){console.error(err);setStatus('OCR gagal dimulai. Periksa koneksi internet lalu coba lagi.');}finally{if(worker){try{await worker.terminate();}catch(e){}worker=null;}isScanning=false;$('scanBtn').disabled=!files.length;renderFiles();updateStats();}}
+function setProgress(n,label){$('progressBar').style.width=Math.max(0,Math.min(100,n))+'%';$('progressPct').textContent=Math.max(0,Math.min(100,n))+'%';$('progressLabel').textContent=label;}
+function setStatus(s){$('statusText').textContent=s;}
+async function loadImageCanvas(file,threshold){
+ const bmp=await createImageBitmap(file),max=3200,scale=Math.min(1,max/Math.max(bmp.width,bmp.height));
+ const w=Math.max(1,Math.round(bmp.width*scale)),h=Math.max(1,Math.round(bmp.height*scale));
+ const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+ const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(bmp,0,0,w,h);bmp.close();
+ if(threshold){const img=ctx.getImageData(0,0,w,h);for(let i=0;i<img.data.length;i+=4){const gray=img.data[i]*.299+img.data[i+1]*.587+img.data[i+2]*.114;const v=gray>175?255:gray<115?0:gray;img.data[i]=img.data[i+1]=img.data[i+2]=v;}ctx.putImageData(img,0,0);}
+ return canvas;
+}
+function renderResults(){const q=$('searchInput').value.trim();const shown=records.filter(r=>(duplicatesVisible||!r.duplicate)&&(!q||r.number.includes(q)));const el=$('results');if(!shown.length){el.innerHTML=`<div class="empty"><b>${records.length?'Tidak ada hasil yang cocok':'Belum ada hasil scan'}</b>${records.length?'Coba kata pencarian lain atau tampilkan duplikat.':'Tambahkan gambar, lalu tekan Mulai Scan.'}</div>`;return;}el.innerHTML=shown.map(r=>{const source=files.find(f=>f.id===r.source);return `<div class="result-row ${r.review?'flagged':''}"><div class="row-main"><div class="number">${escapeHtml(r.number)}</div><div class="row-sub">${escapeHtml(source?source.file.name:'Gambar')} · baris OCR ${r.line}</div>${r.review?'<span class="flag">PERLU DIPERIKSA</span>':''}${r.duplicate?'<span class="flag">DUPLIKAT</span>':''}</div><div class="row-actions"><button class="iconbtn" data-edit="${r.id}">Edit</button><button class="iconbtn" data-copy="${r.id}">Salin</button></div></div>`;}).join('');}
+$('results').addEventListener('click',e=>{const edit=e.target.closest('[data-edit]');const copy=e.target.closest('[data-copy]');if(edit){const r=records.find(x=>x.id===edit.dataset.edit);if(!r)return;editingId=r.id;$('editNumber').value=r.number;$('editModal').style.display='flex';$('editNumber').focus();}if(copy){const r=records.find(x=>x.id===copy.dataset.copy);if(r)copyText(r.number);}});
+$('cancelEdit').addEventListener('click',()=>$('editModal').style.display='none');$('editModal').addEventListener('click',e=>{if(e.target===$('editModal'))$('editModal').style.display='none';});
+$('saveEdit').addEventListener('click',()=>{const r=records.find(x=>x.id===editingId);if(!r)return;const n=normalizeNumber($('editNumber').value);if(!validIndonesian(n)){alert('Format belum dikenali. Masukkan nomor Indonesia, misalnya 6281234567890 atau 081234567890.');return;}r.number=n;r.review=false;r.raw=n;rebuildDuplicateFlags();$('editModal').style.display='none';renderResults();updateStats();});
+function rebuildDuplicateFlags(){const map=new Map();records.forEach(r=>{r.duplicate=false;r.occurrences=1;});records.forEach(r=>{if(map.has(r.number)){r.duplicate=true;map.get(r.number).duplicate=true;map.get(r.number).occurrences++;}else map.set(r.number,r);});}
+$('searchInput').addEventListener('input',renderResults);$('scanBtn').addEventListener('click',startScan);
+$('copyBtn').addEventListener('click',()=>copyText(records.filter(r=>!r.duplicate).map(r=>r.number).join('\n')));
+async function copyText(text){try{await navigator.clipboard.writeText(text);setStatus('Teks berhasil disalin.');}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();setStatus(ok?'Teks berhasil disalin.':'Tidak bisa menyalin otomatis; coba ekspor file.');}}
+function download(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+$('txtBtn').addEventListener('click',()=>download('nomor-whatsapp.txt',records.filter(r=>!r.duplicate).map(r=>r.number).join('\n'),'text/plain;charset=utf-8'));
+$('csvBtn').addEventListener('click',()=>{const rows=[['nomor_whatsapp','perlu_diperiksa','duplikat','file_sumber','baris_ocr'],...records.map(r=>{const f=files.find(x=>x.id===r.source);return[r.number,r.review?'ya':'tidak',r.duplicate?'ya':'tidak',f?f.file.name:'',r.line];})];const csv=rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');download('nomor-whatsapp.csv','\ufeff'+csv,'text/csv;charset=utf-8');});
+$('toggleDupBtn').addEventListener('click',()=>{duplicatesVisible=!duplicatesVisible;renderResults();updateStats();});
+$('clearResultsBtn').addEventListener('click',()=>{if(!confirm('Hapus semua hasil scan? Gambar yang sudah dimasukkan tetap ada.'))return;records=[];renderResults();updateStats();setStatus('Hasil scan dihapus.');});
+renderFiles();renderResults();updateStats();
+})();
+</script>
+</body>
+</html>
